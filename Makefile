@@ -1,7 +1,7 @@
-all: hello
-hello: hello.c
-	gcc -Wall -Werror -o hello hello.c
+all: geom
+hello: geom.c
+	gcc -Wall -Werror -o geom geom.c
 clean:
-	rm hello
+	rm geom
 run:
-	./hello
+	./geom
