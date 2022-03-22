@@ -1,5 +1,5 @@
 all: geom
-hello: geom.c
+geom: geom.c
 	gcc -Wall -Werror -o geom geom.c
 clean:
 	rm geom
