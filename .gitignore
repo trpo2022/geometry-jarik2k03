@@ -1,3 +1,7 @@
+# ignore executable files without Makefile
+*
+!*.*
+!Makefile
 # no *.o or *.a files
 *.[oa]
 # no temporary files
@@ -8,3 +12,4 @@
 *.txt
 # but track input.txt
 !input.txt
+
