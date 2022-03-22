@@ -12,6 +12,10 @@ int main()
     char mass[1000]; // запись из tempor и добавление \n при выводе в output 
 
     f1 = fopen("input.txt", "r+");
+    if (f1 == NULL) {
+	printf("Input.txt is not expected!");
+	return 0;
+	}
     fgets(arr, 900, f1);                 // записывает из исходного файла строку в массив arr
     fclose(f1);
     
@@ -24,6 +28,11 @@ int main()
     }
 
     f2 = fopen("temp.txt", "r+"); 
+        if (f2 == NULL) {
+        printf("Temp.txt is not expected!");
+        return 0;
+        }
+
     for (i=0; arr[i]!= '\0'; i++)       // убирает лишние пробелы, оставляя всего лишь один пробел
     {   
         if (arr[i] == ' ' && arr[i+1] == ' ') continue;
@@ -31,13 +40,19 @@ int main()
     }
     fclose(f2);
 
-    f2 = fopen("temp.txt", "r+");       
+    f2 = fopen("temp.txt", "r+");
+
     fgets(mas, 900, f2);    // тут же записывает строку без пробелов и регистров в массив mas
     fclose(f2);
 
 
     f3 = fopen("tempor.txt", "r+");     // в этом случае появляется возможность убрать едичиничные пробелы в некоторых местах, еще и для того, чтобы потом можно было без косяков поставить \n
-    for (i=0; mas[i]!= '\0'; i++)
+       if (f3 == NULL) {
+        printf("Tempor.txt is not expected!");
+        return 0;
+        }
+
+   for (i=0; mas[i]!= '\0'; i++)
     {   
         if (mas[i-1] == '(' && mas[i] == ' ') continue; // не записывает пробел между откр скобками
         if (mas[i] == ' ' && mas[i+1] == ')') continue; // не записывает пробел между закр скобками
@@ -54,6 +69,11 @@ int main()
 
 
     f4 = fopen("output.txt", "r+"); 
+	    if (f4 == NULL) {
+        printf("Output.txt is not expected!");
+        return 0;
+        }
+
     for (i=0; mass[i]!= '\0'; i++)
     {   
         if (mass[i-1] == ')' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
