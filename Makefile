@@ -47,7 +47,7 @@ $(TEST_NAME): $(TEST_PATH)
 -include $(DEPS)
 
 $(TEST_PATH): $(TEST_OBJECTS) $(LIB_PATH) 
-	$(CC) $(CFLAGS) $(DEBUG) $(CPPFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(DEBUG) $(CPPFLAGS) -o $@ $^ -lm
 
 $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(DEBUG) $(CPPFLAGS) -c -o $@ $<
