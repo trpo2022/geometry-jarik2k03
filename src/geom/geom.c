@@ -2,7 +2,7 @@
 #include <string.h>
 #include <etry/etry.h>
 
-int main()
+int main(void)
 {
     unsigned short i;
     FILE *f1;
@@ -13,10 +13,10 @@ int main()
     char mas[1000]; // запись из temp
     char mass[1000]; // запись из tempor и добавление \n при выводе в output 
     short flag = 0;
-    f1 = fopen("data/input.txt", "r+"); 
+    f1 = fopen("../bin/data/input.txt", "r+"); 
     if (f1 == NULL)  // защита от "дурака". Создает пустой input.txt если окажется, что такого файла не существует
     {
-        f1 = fopen("data/input.txt", "w");
+        f1 = fopen("../bin/data/input.txt", "w");
         fclose(f1);
         printf("Dlya raboti neobhodim input.txt \nSozdan automaticheski.\n");
         return 0;
@@ -24,15 +24,15 @@ int main()
     fgets(arr, 990, f1);  // записывает из исходного файла строку в массив arr
     fclose(f1);
 
-    f2 = fopen ("data/temp.txt", "w");   // автосоздание вспомогательного temp.txt
+    f2 = fopen ("../bin/data/temp.txt", "w");   // автосоздание вспомогательного temp.txt
     fclose(f2);
-    f3 = fopen ("data/tempor.txt", "w"); // автосоздание вспомогательного tempor.txt
+    f3 = fopen ("../bin/data/tempor.txt", "w"); // автосоздание вспомогательного tempor.txt
     fclose(f3);
-    f4 = fopen ("data/output.txt", "w"); // автосоздание вспомогательного output.txt
+    f4 = fopen ("../bin/data/output.txt", "w"); // автосоздание вспомогательного output.txt
     fclose(f4);
 
 
-    f1 = fopen("data/input.txt", "r+");
+    f1 = fopen("../bin/data/input.txt", "r+");
     
     for (i=0; i< strlen(arr); i++)                // понижает регистр всех букв (CIrclE => circle)
     {
@@ -42,7 +42,7 @@ int main()
         }
     }
 
-    f2 = fopen("data/temp.txt", "r+"); 
+    f2 = fopen("../bin/data/temp.txt", "r+"); 
     for (i=0; arr[i]!= '\0'; i++)       // убирает лишние пробелы, оставляя всего лишь один пробел
     {   
         if (arr[i] == ' ' && arr[i+1] == ' ') continue;
@@ -50,11 +50,11 @@ int main()
     }
     fclose(f2);
 
-    f2 = fopen("data/temp.txt", "r+");       
+    f2 = fopen("../bin/data/temp.txt", "r+");       
     fgets(mas, strlen(arr) + 1, f2);    // тут же записывает строку без пробелов и регистров в массив mas
     fclose(f2);
 
-    f3 = fopen("data/tempor.txt", "r+");     // в этом случае появляется возможность убрать едичиничные пробелы в некоторых местах, еще и для того, чтобы потом можно было без косяков поставить \n
+    f3 = fopen("../bin/data/tempor.txt", "r+");     // в этом случае появляется возможность убрать едичиничные пробелы в некоторых местах, еще и для того, чтобы потом можно было без косяков поставить \n
     for (i=0; mas[i]!= '\0'; i++)
     {   
         if (mas[i-1] == '[' && mas[i] == ' ') continue; // не записывает пробел между откр кв скобками
@@ -71,16 +71,14 @@ int main()
     }
     fclose(f3);
 
-    f3 = fopen("data/tempor.txt", "r+"); // сохраняет изменения уже в массиве mass для записи в выходной файл (output)
+    f3 = fopen("../bin/data/tempor.txt", "r+"); // сохраняет изменения уже в массиве mass для записи в выходной файл (output)
     fgets(mass, strlen(mas), f3);
     fclose(f3);
 
-    f4 = fopen("data/output.txt", "r+"); 
+    f4 = fopen("../bin/data/output.txt", "r+"); 
     for (i=0; mass[i]!= '\0'; i++)
     {   
-        // if (mass[i-1] == ']' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
-        // if (mass[i-1] == '}' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
-        // if (mass[i-1] == ')' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
+
         if (mass[i+1] == '\0') mass[i] = '\n'; // последний символ
         if (mass[i] == ' ' && mass[i+1] == 'p') mass[i] = '\n'; // переносит polygon
         if (mass[i] == ' ' && mass[i+1] == 't') mass[i] = '\n'; // переносит triangle

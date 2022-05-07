@@ -1,4 +1,6 @@
 struct Ct{
+    float perimeter;
+    float area;
     float x;
     float y;
     float radius;
@@ -9,12 +11,12 @@ struct Ct{
     float x3;
     float y3;
     unsigned short id;
+    char type;
 } c[10];
 
 short argt(char *m, short i, short column);
 short argc(char *m, short i, short column);
 short circle(char *m, short i, short column);
 short triangle(char *m, short i, short column);
-//short polygon(char *m, short i, short column);
 short error_detector(char *m);
-void numcalculator(char *m, struct Ct* c);
+short numcalculator(char *m, struct Ct* c);

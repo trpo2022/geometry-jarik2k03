@@ -1,7 +1,8 @@
 *.a
 *.d
 *.o
-bin/*
+bin/test
+bin/geom
 bin/data/*.txt
 bin/data/!input.txt
 .vscode/
