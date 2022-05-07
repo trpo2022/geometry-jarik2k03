@@ -172,8 +172,9 @@ short argt(char *m, short i, short column) // проверка для треуг
     return flag;
 }
 
-void numcalculator(char *m, struct Ct* c)
+short numcalculator(char *m, struct Ct* c)
 {
+    short flag = 0;
     short figure = 0;
     short i = 0, j;
     short a = 0;
@@ -374,6 +375,7 @@ void numcalculator(char *m, struct Ct* c)
                             if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения треугольника с кругом
                             {
                                 printf("\t--intersects with circle:%d \n", c[j].id);
+                                flag++;
                                 continue;
                             }  
                         }
@@ -390,6 +392,7 @@ void numcalculator(char *m, struct Ct* c)
                             if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения треугольника с кругом
                             {
                                 printf("\t--intersects with circle:%d \n", c[j].id);
+                                flag++;
                                 continue;
                             }  
                         }
@@ -406,6 +409,7 @@ void numcalculator(char *m, struct Ct* c)
                             if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения треугольника с кругом
                             {
                                 printf("\t--intersects with circle:%d \n", c[j].id);
+                                flag++;
                                 continue;
                             }  
                         }
@@ -419,6 +423,7 @@ void numcalculator(char *m, struct Ct* c)
                         if (z == 0 || x == 0 || v == 0) // условие для пересечения треугольников
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;   
                         }
                         /* Проверка с точкой x1; y1 */
@@ -428,6 +433,7 @@ void numcalculator(char *m, struct Ct* c)
                         if (z == 0 || x == 0 || v == 0) // условие для пересечения треугольников
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;   
                         }
                         /* Проверка с точкой x2; y2 */    
@@ -437,6 +443,7 @@ void numcalculator(char *m, struct Ct* c)
                         if (z == 0 || x == 0 || v == 0) // условие для пересечения треугольников
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;   
                         }
                     } 
@@ -474,6 +481,7 @@ void numcalculator(char *m, struct Ct* c)
                         if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения круга с треугольником
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;
                         }  
                     }
@@ -490,6 +498,7 @@ void numcalculator(char *m, struct Ct* c)
                         if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения круга с треугольником
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;
                         }  
                     }
@@ -506,6 +515,7 @@ void numcalculator(char *m, struct Ct* c)
                         if ((t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1)) // условие для пересечения круга с треугольником
                         {
                             printf("\t--intersects with triangle:%d \n", c[j].id);
+                            flag++;
                             continue;
                         }  
                     }
@@ -515,11 +525,13 @@ void numcalculator(char *m, struct Ct* c)
                     t = sqrt(((c[j].x - c[figure].x) * (c[j].x - c[figure].x)) + ((c[j].y - c[figure].y) * (c[j].y - c[figure].y)));
                     if (t <= (c[figure].radius + c[j].radius)) // условие для пересечения кругов
                     {
-                        printf("\t--intersects with circle:%d \n", c[j].id);      
+                        printf("\t--intersects with circle:%d \n", c[j].id);    
+                        flag++;  
                     }
                 }       
             }
         }
     }
 
+    return flag;
 }

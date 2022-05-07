@@ -19,4 +19,4 @@ short argc(char *m, short i, short column);
 short circle(char *m, short i, short column);
 short triangle(char *m, short i, short column);
 short error_detector(char *m);
-void numcalculator(char *m, struct Ct* c);
+short numcalculator(char *m, struct Ct* c);
