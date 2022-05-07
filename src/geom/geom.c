@@ -78,9 +78,7 @@ int main()
     f4 = fopen("data/output.txt", "r+"); 
     for (i=0; mass[i]!= '\0'; i++)
     {   
-        // if (mass[i-1] == ']' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
-        // if (mass[i-1] == '}' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
-        // if (mass[i-1] == ')' && mass[i] == ' ') mass[i] = '\n'; // ставится \n и записывается в итоговый файл
+
         if (mass[i+1] == '\0') mass[i] = '\n'; // последний символ
         if (mass[i] == ' ' && mass[i+1] == 'p') mass[i] = '\n'; // переносит polygon
         if (mass[i] == ' ' && mass[i+1] == 't') mass[i] = '\n'; // переносит triangle
